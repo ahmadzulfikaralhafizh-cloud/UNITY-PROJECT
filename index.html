@@ -126,6 +126,17 @@ footer {
   margin-top: 50px;
 }
 
+.navbar-nav {
+  flex-wrap: nowrap;        /* jangan turun ke bawah */
+  overflow-x: auto;         /* bisa discroll ke samping */
+  -webkit-overflow-scrolling: touch; /* biar smooth di HP */
+}
+
+.navbar-nav .nav-item {
+  flex: 0 0 auto; /* tiap item nggak mengecil */
+}
+
+
 
   </style>
 </head>
