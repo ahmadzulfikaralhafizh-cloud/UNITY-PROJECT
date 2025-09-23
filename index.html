@@ -6,21 +6,24 @@
   <title>UNITY Project</title>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Font Awesome untuk social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
-    /* Reset body */
+    /* ====================== */
+    /* Reset Body */
+    /* ====================== */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
     }
 
     /* ====================== */
-    /* Navbar Logo Atas (UNITY Edition) */
+    /* Logo Atas (UNITY Edition) */
     /* ====================== */
     .top-bar {
       position: absolute;
@@ -39,11 +42,11 @@
     }
 
     /* ====================== */
-    /* Navbar Menu (Bugatti, Pagani, dst) */
+    /* Navbar Menu (Brand Mobil) */
     /* ====================== */
     .navbar {
       position: absolute;
-      top: 60px; /* biar pas di bawah logo */
+      top: 60px;
       width: 100%;
       background: transparent;
       z-index: 15;
@@ -56,11 +59,9 @@
       font-size: 14px;
       margin: 0 5px;
     }
-
-    /* Navbar scroll horizontal kalo kebanyakan item */
     .navbar-nav {
       flex-wrap: nowrap;
-      overflow-x: auto;
+      overflow-x: auto; /* scroll horizontal jika terlalu banyak item */
       -webkit-overflow-scrolling: touch;
     }
     .navbar-nav .nav-item {
@@ -68,11 +69,11 @@
     }
 
     /* ====================== */
-    /* Hero Section (gambar Bugatti) */
+    /* Hero Section (Gambar Mobil) */
     /* ====================== */
     .hero-section {
       position: relative;
-      background: url(bugati.jpg) no-repeat center center/cover;
+      background: url('bugati.jpg') no-repeat center center/cover;
       height: 100vh;
       display: flex;
       align-items: center;
@@ -82,7 +83,7 @@
     .hero-text h1 {
       font-size: 3.5rem;
       font-weight: bold;
-      padding-top: 450px; /* biar turun ke bawah */
+      padding-top: 450px; /* untuk menurunkan teks */
     }
     .hero-text p {
       font-size: 1rem;
@@ -90,7 +91,7 @@
     }
 
     /* ====================== */
-    /* Popular Makes Section (logo brand mobil) */
+    /* Popular Makes Section (Logo Mobil) */
     /* ====================== */
     .popular-makes {
       padding: 50px 0;
@@ -110,90 +111,94 @@
       text-decoration: underline;
       color: black;
     }
-
     /* Grid logo mobil */
     .logo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 20px;
-      justify-items: center; /* Biar rata tengah */
+      justify-items: center;
       align-items: center;
     }
-    
     .logo-grid div {
       width: 120px;
-      height: 120px; /* Biar kotak & konsisten */
+      height: 120px;
       border: 1px solid #ddd;
       background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 10px; /* Sudut agak halus */
+      border-radius: 10px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
     .logo-grid img {
       width: 80%;
       height: 80%;
-      object-fit: contain; /* Logo tetap proporsional */
+      object-fit: contain;
     }
-    
     .logo-grid div:hover {
-      transform: scale(1.08); /* Efek ngembang */
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Shadow lebih smooth */
+      transform: scale(1.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-
     /* ====================== */
-    /* Footer Section */
+    /* Footer */
     /* ====================== */
-    footer {
-      background-color: #111;
-      color: #ccc;
-      padding-top: 40px;
-      padding-bottom: 20px;
+    .footer {
+      background-color: #121212;
+      color: white;
+      padding: 50px 0;
       font-size: 14px;
-      text-align: left ;
     }
-
-    /* Judul (JamesEdition, Categories, dll) */
-    footer h6 {
-      font-size: 15px;
-      font-weight: bold;
-      color: #fff;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    /* Link di footer */
-    footer a {
+    .footer a {
       color: #ccc;
       text-decoration: none;
-      transition: color 0.3s;
+      display: block;
+      margin-bottom: 8px;
     }
-    footer a:hover {
-      color: #fff;
+    .footer a:hover {
+      color: white;
     }
-
-    /* Bagian bawah footer */
-    .footer-bottom {
-      border-top: 1px solid #333;
-      margin-top: 20px;
-      padding-top: 15px;
-      font-size: 13px;
-      text-align: center;
+    .footer-heading {
+      font-weight: bold;
+      color: #aaa;
+      margin-bottom: 15px;
     }
-
-    /* Icon sosmed */
-    footer .social-icons a {
-      color: #ccc;
-      margin: 0 8px;
+    .qr-code {
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .app-store-button img {
+      height: 40px;
+    }
+    .footer-settings select {
+      background-color: #212121;
+      color: white;
+      border: 1px solid #444;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      width: 100%;
+    }
+    /* Footer Bottom */
+    .footer-bottom-info span {
+      color: white;
+    }
+    /* Social Media Icons Horizontal */
+    .footer-social-icons-vertical {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px; /* jarak antar ikon */
+    }
+    .footer-social-icons-vertical a {
+      color: white;
       font-size: 18px;
-      transition: color 0.3s;
+      margin-bottom: 0;
     }
-    footer .social-icons a:hover {
-      color: #fff;
+    .footer-social-icons-vertical a:hover {
+      color: #ffffff;
     }
+
   </style>
 </head>
 <body>
@@ -206,20 +211,19 @@
   </div>
 
   <!-- ====================== -->
-  <!-- Navbar Menu -->
+  <!-- Navbar -->
   <!-- ====================== -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <div class="collapse navbar-collapse show">
         <ul class="navbar-nav mx-auto">
-          <!-- Link ke halaman brand mobil -->
           <li class="nav-item"><a class="nav-link" href="bugatti.html">Bugatti</a></li>
           <li class="nav-item"><a class="nav-link" href="pagani.html">Pagani</a></li>
           <li class="nav-item"><a class="nav-link" href="koenigsegg.html">Koenigsegg</a></li>
-          <li class="nav-item"><a class="nav-link" href="ferarri.html">Ferrari</a></li>
+          <li class="nav-item"><a class="nav-link" href="ferrari.html">Ferrari</a></li>
           <li class="nav-item"><a class="nav-link" href="lamborghini.html">Lamborghini</a></li>
           <li class="nav-item"><a class="nav-link" href="mercedes.html">Mercedes</a></li>
-          <li class="nav-item"><a class="nav-link" href="rools.html">Rolls-Royce</a></li>
+          <li class="nav-item"><a class="nav-link" href="rolls.html">Rolls-Royce</a></li>
           <li class="nav-item"><a class="nav-link" href="mclaren.html">McLaren</a></li>
           <li class="nav-item"><a class="nav-link" href="brabus.html">Brabus</a></li>
           <li class="nav-item"><a class="nav-link" href="porsche.html">Porsche</a></li>
@@ -245,7 +249,7 @@
   </div>
 
   <!-- ====================== -->
-  <!-- Popular Makes (Logo Mobil) -->
+  <!-- Popular Makes -->
   <!-- ====================== -->
   <section class="popular-makes">
     <div class="container">
@@ -253,13 +257,11 @@
         <h2>Popular Makes</h2>
         <a href="#">View all</a>
       </div>
-
-      <!-- Grid logo -->
       <div class="logo-grid">
         <div><img src="bugattilogo.png" alt="Bugatti"></div>
         <div><img src="paganilogo.jpg" alt="Pagani"></div>
         <div><img src="koenigseglogo.jpg" alt="Koenigsegg"></div>
-        <div><img src="ferarrilogo.jpg" alt="Ferrari"></div>
+        <div><img src="ferrarilogo.jpg" alt="Ferrari"></div>
         <div><img src="lamborghinilogo.jpg" alt="Lamborghini"></div>
         <div><img src="mercedezlogo.jpg" alt="Mercedes"></div>
         <div><img src="rollslogo.jpg" alt="Rolls Royce"></div>
@@ -279,67 +281,100 @@
   <!-- ====================== -->
   <!-- Footer -->
   <!-- ====================== -->
-  <footer>
-    <div class="container-fluid text-md-left">
+  <footer class="footer">
+    <div class="container">
       <div class="row">
-        <!-- Kolom 1 -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6>UNITYEDITION</h6>
-          <p><a href="#">About</a></p>
-          <p><a href="#">Contact</a></p>
-          <p><a href="#">Careers</a></p>
-          <p><a href="#">Help & FAQ</a></p>
-          <p><a href="#">Terms</a></p>
-          <p><a href="#">Privacy</a></p>
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="footer-heading text-uppercase">JAMESEDITION</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Help & FAQ</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
         </div>
-
-        <!-- Kolom 2 -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6>CATEGORIES</h6>
-          <p><a href="#">Bugatti</a></p>
-          <p><a href="#">Pagani</a></p>
-          <p><a href="#">Koenigsegg</a></p>
-          <p><a href="#">Ferarri</a></p>
-          <p><a href="#">Lamborghini</a></p>
-          <p><a href="#">Mercedez</a></p>
-          <p><a href="#">Rolls-Royce</a></p>
-          <p><a href="#">Mc Laren</a></p>
-          <p><a href="#">Brabus</a></p>
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="footer-heading text-uppercase">CATEGORIES</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Real Estate</a></li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">Yachts</a></li>
+            <li><a href="#">Jets</a></li>
+            <li><a href="#">Helicopters</a></li>
+            <li><a href="#">Watches</a></li>
+            <li><a href="#">Jewelry</a></li>
+            <li><a href="#">Extraordinaire</a></li>
+            <li><a href="#">Lifestyle</a></li>
+          </ul>
         </div>
-
-        <!-- Kolom 3 -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6>CATALOG</h6>
-          <p><a href="#">All Brands</a></p>
-          <p><a href="#">All Businesses</a></p>
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="footer-heading text-uppercase">CATALOG</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">All Brands</a></li>
+            <li><a href="#">All Businesses</a></li>
+          </ul>
         </div>
-
-        <!-- Kolom 4 -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6>FOR BUSINESS</h6>
-          <p><a href="#">Sell With Us</a></p>
-          <p><a href="#">Partner</a></p>
-          <p><a href="#">Linking</a></p>
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="footer-heading text-uppercase">FOR BUSINESS</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Sell With Us</a></li>
+            <li><a href="#">Partner</a></li>
+            <li><a href="#">Linking</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 mb-4 mb-md-0 text-center">
+          <h5 class="footer-heading text-uppercase">MOBILE APP</h5>
+          <div class="qr-code d-inline-block mb-3">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.apple.com/app-store/" alt="QR Code" class="img-fluid">
+          </div>
+          <div class="app-store-button">
+            <a href="https://www.apple.com/app-store/" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png" alt="Download on the App Store" class="img-fluid">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="footer-heading text-uppercase">SETTINGS</h5>
+          <select class="form-select footer-settings mb-2">
+            <option selected>English</option>
+            <option value="1">Bahasa Indonesia</option>
+          </select>
+          <select class="form-select footer-settings mb-2">
+            <option selected>United States dollar - $</option>
+            <option value="1">Euro - €</option>
+          </select>
+          <select class="form-select footer-settings">
+            <option selected>Square Meter - m² / H</option>
+            <option value="1">Square Foot - ft²</option>
+          </select>
         </div>
       </div>
 
-      <!-- Bagian bawah -->
-      <div class="footer-bottom">
-        <p>© 2025 UnityEdition (r)</p>
-        <div class="social-icons">
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-youtube"></i></a>
-          <a href="#"><i class="bi bi-twitter"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-          <a href="#"><i class="bi bi-pinterest"></i></a>
+      <hr class="my-4" style="border-color: #333;">
+
+      <div class="row align-items-center footer-bottom-info">
+        <div class="col-md-8 text-md-start mb-3 mb-md-0">
+          <div class="d-flex align-items-center">
+            <img src="https://assets.jamesedition.com/images/favicon/logo_white_min.svg" alt="Logo" style="height: 25px; margin-right: 10px;">
+            <span>Copyright &copy; 2025 JamesEdition B.V.®</span>
+          </div>
+        </div>
+        <div class="col-md-4 text-md-end footer-social-icons-vertical">
+          <!-- Social Media Icons -->
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
