@@ -116,27 +116,33 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 20px;
+      justify-items: center; /* Biar rata tengah */
+      align-items: center;
     }
+    
     .logo-grid div {
       width: 120px;
-      height: 100px;
-      border: 1px solid #eee;
-      background: white;
+      height: 120px; /* Biar kotak & konsisten */
+      border: 1px solid #ddd;
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto;
-      transition: 0.3s ease;
+      border-radius: 10px; /* Sudut agak halus */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
     .logo-grid img {
-      max-width: 80%;
-      max-height: 70%;
-      object-fit: contain;
+      width: 80%;
+      height: 80%;
+      object-fit: contain; /* Logo tetap proporsional */
     }
+    
     .logo-grid div:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transform: scale(1.08); /* Efek ngembang */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Shadow lebih smooth */
     }
+
 
     /* ====================== */
     /* Footer Section */
@@ -277,7 +283,7 @@
       <div class="row">
         <!-- Kolom 1 -->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6>JAMESEDITION</h6>
+          <h6>UNITYEDITION</h6>
           <p><a href="#">About</a></p>
           <p><a href="#">Contact</a></p>
           <p><a href="#">Careers</a></p>
@@ -289,15 +295,15 @@
         <!-- Kolom 2 -->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
           <h6>CATEGORIES</h6>
-          <p><a href="#">Real Estate</a></p>
-          <p><a href="#">Cars</a></p>
-          <p><a href="#">Yachts</a></p>
-          <p><a href="#">Jets</a></p>
-          <p><a href="#">Helicopters</a></p>
-          <p><a href="#">Watches</a></p>
-          <p><a href="#">Jewelry</a></p>
-          <p><a href="#">Extraordinaire</a></p>
-          <p><a href="#">Lifestyle</a></p>
+          <p><a href="#">Bugatti</a></p>
+          <p><a href="#">Pagani</a></p>
+          <p><a href="#">Koenigsegg</a></p>
+          <p><a href="#">Ferarri</a></p>
+          <p><a href="#">Lamborghini</a></p>
+          <p><a href="#">Mercedez</a></p>
+          <p><a href="#">Rolls-Royce</a></p>
+          <p><a href="#">Mc Laren</a></p>
+          <p><a href="#">Brabus</a></p>
         </div>
 
         <!-- Kolom 3 -->
@@ -318,7 +324,7 @@
 
       <!-- Bagian bawah -->
       <div class="footer-bottom">
-        <p>© 2025 JamesEdition B.V.</p>
+        <p>© 2025 UnityEdition (r)</p>
         <div class="social-icons">
           <a href="#"><i class="bi bi-instagram"></i></a>
           <a href="#"><i class="bi bi-facebook"></i></a>
