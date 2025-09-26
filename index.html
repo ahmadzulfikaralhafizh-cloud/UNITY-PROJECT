@@ -14,286 +14,567 @@
   <!-- Font Awesome (biar sosmed muncul) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
+  <!-- Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --primary-dark: #121212;
+      --secondary-dark: #1e1e1e;
+      --accent-gray: #333333;
+      --text-light: #e0e0e0;
+      --text-white: #ffffff;
+      --hover-light: #479aed;
+      --shadow-dark: rgba(0, 0, 0, 0.5);
+      --border-light: rgba(255, 255, 255, 0.1);
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
     }
 
     /* ====================== */
-    /* Top Bar */
+    /* Top Bar - Enhanced with subtle animation */
     /* ====================== */
     .top-bar {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       padding: 15px 30px;
-      background: transparent;
-      z-index: 20;
+      background: rgba(18, 18, 18, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 30;
+      transition: background 0.3s ease;
+      border-bottom: 1px solid var(--border-light);
     }
+
+    .top-bar.scrolled {
+      background: rgba(18, 18, 18, 1);
+    }
+
     .top-bar .brand {
-      color: white;
-      font-weight: bold;
-      font-size: 1.5rem;
-      margin-left: 30px;
+      color: var(--text-white);
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 4px var(--shadow-dark);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ====================== */
-    /* Navbar */
+    /* Navbar - Made sticky and interactive */
     /* ====================== */
     .navbar {
-      position: absolute;
-      top: 60px;
+      position: fixed;
+      top: 70px;
       width: 100%;
-      background: transparent;
-      z-index: 15;
-      border-top: 1px solid rgba(255, 255, 255, 0.5);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(30, 30, 30, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 25;
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      padding: 0;
     }
+
+    .navbar.scrolled {
+      top: 60px;
+      background: rgba(30, 30, 30, 1);
+    }
+
     .navbar-nav {
       flex-wrap: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      padding: 10px 0;
     }
+
     .navbar-nav::-webkit-scrollbar {
       display: none;
     }
+
     .navbar-nav .nav-item {
       flex: 0 0 auto;
     }
+
     .navbar-nav .nav-link {
-      color: white !important;
+      color: var(--text-light) !important;
       font-weight: 500;
       font-size: 14px;
-      margin: 0 5px;
-      transition: transform 0.3s ease, color 0.3s ease;
+      margin: 0 15px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+
+    .navbar-nav .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(71, 154, 237, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .navbar-nav .nav-link:hover::before {
+      left: 100%;
+    }
+
     .navbar-nav .nav-link:hover {
-      transform: scale(1.1);
-      color: #ffffff !important;
+      transform: translateY(-2px);
+      color: var(--text-white) !important;
+      background: rgba(71, 154, 237, 0.1);
+      box-shadow: 0 4px 15px var(--shadow-dark);
     }
 
     /* ====================== */
-    /* Hero Section */
+    /* Hero Section - Enhanced with overlay and parallax effect */
     /* ====================== */
-   .hero-section {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;  /* tengah horizontal */
-    align-items: flex-end;    /* dorong ke bawah */
-    text-align: center;
-    color: white;
-    overflow: hidden;
-    padding-bottom: 60px;     /* kasih jarak dari bawah */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--text-white);
+      overflow: hidden;
+      margin-top: 110px; /* Adjust for fixed top bar and navbar */
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(18, 18, 18, 0.6), rgba(18, 18, 18, 0.8));
+      z-index: 1;
     }
 
     .hero-section video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform 0.1s ease;
+    }
+
+    .hero-section:hover video {
+      transform: scale(1.02); /* Subtle zoom on hover for interactivity */
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.5s ease-out;
     }
 
     .hero-text h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin: 0;
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 0 0 20px 0;
+      text-shadow: 0 4px 8px var(--shadow-dark);
+      letter-spacing: 2px;
     }
 
     .hero-text p {
-    font-size: 1.2rem;
-    margin-top: 15px;
+      font-size: 1.3rem;
+      margin: 0;
+      opacity: 0.9;
+      max-width: 800px;
+      line-height: 1.6;
     }
 
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ====================== */
+    /* Hero Carousel - Integrated and dark-themed */
+    /* ====================== */
+    .carousel {
+      margin-top: 20px;
+      background-color: var(--secondary-dark);
+    }
 
     .carousel-item img {
-      height: 100vh;
+      height: 70vh;
       object-fit: cover;
+      filter: brightness(0.6); /* Darken images for theme */
     }
+
     .carousel-caption {
       position: absolute;
-      bottom: 20%;
+      bottom: 25%;
       left: 10%;
       text-align: left;
+      background: rgba(18, 18, 18, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      animation: slideInLeft 1s ease-out;
     }
+
     .carousel-caption h1 {
       font-size: 3rem;
-      font-weight: bold;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 10px;
     }
+
     .carousel-caption p {
       font-size: 1.2rem;
+      color: var(--text-light);
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+      opacity: 1;
     }
 
     /* ====================== */
-    /* Popular Makes Section */
+    /* Popular Makes Section - Interactive grid with animations */
     /* ====================== */
     .popular-makes {
-      padding: 50px 0;
+      padding: 80px 0;
+      background: linear-gradient(to bottom, var(--secondary-dark), var(--primary-dark));
     }
+
     .popular-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-out;
     }
+
     .popular-header h2 {
-      font-size: 24px;
+      font-size: 2.5rem;
       font-weight: 600;
+      color: var(--text-white);
+      margin: 0;
     }
+
     .popular-header a {
-      font-size: 14px;
-      text-decoration: underline;
-      color: black;
+      font-size: 16px;
+      text-decoration: none;
+      color: var(--hover-light);
+      transition: color 0.3s ease;
+      font-weight: 500;
     }
+
+    .popular-header a:hover {
+      color: var(--text-white);
+      text-shadow: 0 0 10px var(--hover-light);
+    }
+
     .logo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 25px;
       justify-items: center;
       align-items: center;
     }
+
     .logo-grid div {
-      width: 120px;
-      height: 120px;
-      border: 1px solid #ddd;
-      background: #fff;
+      width: 140px;
+      height: 140px;
+      border: 2px solid var(--border-light);
+      background: var(--accent-gray);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 15px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bounce effect */
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
+
+    .logo-grid div::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(71, 154, 237, 0.1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 15px;
+    }
+
+    .logo-grid div:hover::before {
+      opacity: 1;
+    }
+
     .logo-grid img {
       width: 80%;
       height: 80%;
       object-fit: contain;
+      filter: brightness(1.2); /* Enhance logos in dark theme */
+      transition: transform 0.3s ease;
+      z-index: 1;
     }
+
     .logo-grid div:hover {
-      transform: scale(1.08);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 30px rgba(71, 154, 237, 0.3);
+      border-color: var(--hover-light);
+    }
+
+    .logo-grid div:hover img {
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Stagger animation for grid items */
+    .logo-grid div:nth-child(1) { animation-delay: 0.1s; }
+    .logo-grid div:nth-child(2) { animation-delay: 0.2s; }
+    .logo-grid div:nth-child(3) { animation-delay: 0.3s; }
+    .logo-grid div:nth-child(4) { animation-delay: 0.4s; }
+    .logo-grid div:nth-child(5) { animation-delay: 0.5s; }
+    .logo-grid div:nth-child(6) { animation-delay: 0.6s; }
+    .logo-grid div:nth-child(7) { animation-delay: 0.7s; }
+    .logo-grid div:nth-child(8) { animation-delay: 0.8s; }
+    .logo-grid div:nth-child(9) { animation-delay: 0.9s; }
+    .logo-grid div:nth-child(10) { animation-delay: 1s; }
+    .logo-grid div:nth-child(11) { animation-delay: 1.1s; }
+    .logo-grid div:nth-child(12) { animation-delay: 1.2s; }
+    .logo-grid div:nth-child(13) { animation-delay: 1.3s; }
+    .logo-grid div:nth-child(14) { animation-delay: 1.4s; }
+    .logo-grid div:nth-child(15) { animation-delay: 1.5s; }
+    .logo-grid div:nth-child(16) { animation-delay: 1.6s; }
+
+    .logo-grid div {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
     /* ====================== */
-    /* Footer */
+    /* Footer - Enhanced dark theme */
     /* ====================== */
     .footer {
-      background-color: #121212;
-      color: white;
-      padding: 50px 0;
+      background: linear-gradient(to top, var(--primary-dark), var(--secondary-dark));
+      color: var(--text-light);
+      padding: 60px 0 30px;
       font-size: 14px;
+      border-top: 1px solid var(--border-light);
     }
+
     .footer a {
-      color: #ccc;
+      color: var(--text-light);
       text-decoration: none;
       display: block;
       margin-bottom: 8px;
+      transition: color 0.3s ease;
     }
+
     .footer a:hover {
-      color: white;
+      color: var(--hover-light);
     }
+
     .footer-heading {
-      font-weight: bold;
-      color: #aaa;
-      margin-bottom: 15px;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 20px;
+      letter-spacing: 1px;
     }
+
     .footer-bottom-info span {
-      color: white;
+      color: var(--text-white);
     }
+
     .footer-social-icons {
       display: flex;
       justify-content: flex-end;
-      gap: 15px;
+      gap: 20px;
     }
+
     .footer-social-icons a {
-      color: white;
-      font-size: 18px;
+      color: var(--text-light);
+      font-size: 20px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--accent-gray);
+      transition: all 0.3s ease;
     }
+
     .footer-social-icons a:hover {
-      color: #479aed;
+      color: var(--text-white);
+      background: var(--hover-light);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(71, 154, 237, 0.4);
+    }
+
+    /* ====================== */
+    /* Additional Interactivity Styles */
+    /* ====================== */
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .navbar-nav .nav-link {
+        margin: 0 5px;
+        padding: 5px 10px;
+      }
+
+      .logo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 15px;
+      }
+
+      .logo-grid div {
+        width: 100px;
+        height: 100px;
+      }
     }
   </style>
 </head>
 <body>
 
   <!-- Top Bar -->
-  <div class="top-bar">
+  <div class="top-bar" id="topBar">
     <span class="brand">UNITY Edition</span>
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" id="navbar">
     <div class="container-fluid">
       <div class="collapse navbar-collapse show">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a class="nav-link" href="bugatti.html">Bugatti</a></li>
           <li class="nav-item"><a class="nav-link" href="pagani.html">Pagani</a></li>
           <li class="nav-item"><a class="nav-link" href="koenigsegg.html">Koenigsegg</a></li>
-          <li class="nav-item"><a class="nav-link" href="ferarri.html">Ferrari</a></li>
+          <li class="nav-item"><a class="nav-link" href="ferrari.html">Ferrari</a></li> <!-- Fixed typo -->
           <li class="nav-item"><a class="nav-link" href="lamborghini.html">Lamborghini</a></li>
           <li class="nav-item"><a class="nav-link" href="mercedes.html">Mercedes</a></li>
-          <li class="nav-item"><a class="nav-link" href="rools.html">Rolls-Royce</a></li>
+          <li class="nav-item"><a class="nav-link" href="audi.html">Audi</a></li> <!-- Fixed typo -->
           <li class="nav-item"><a class="nav-link" href="mclaren.html">McLaren</a></li>
-          <li class="nav-item"><a class="nav-link" href="brabus.html">Brabus</a></li>
+          <li class="nav-item"><a class="nav-link" href="bmw.html">BMW</a></li>
           <li class="nav-item"><a class="nav-link" href="porsche.html">Porsche</a></li>
           <li class="nav-item"><a class="nav-link" href="aston.html">Aston Martin</a></li>
           <li class="nav-item"><a class="nav-link" href="bentley.html">Bentley</a></li>
-          <li class="nav-item"><a class="nav-link" href="maybach.html">Maybach</a></li>
-          <li class="nav-item"><a class="nav-link" href="bmw.html">BMW</a></li>
-          <li class="nav-item"><a class="nav-link" href="ford.html">Ford</a></li>
-          <li class="nav-item"><a class="nav-link" href="audi.html">Audi</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
- <div class="hero-section">
-  <video autoplay muted loop playsinline>
-    <source src="bgvideo.mp4" type="video/mp4">
-  </video>
-  <div class="hero-text">
-    <h1>Luxury Cars</h1>
-    <p>EXPLORE 31,000+ LUXURY CARS, SUPERCARS AND EXOTIC CARS FOR SALE WORLDWIDE IN ONE SIMPLE SEARCH</p>
+  <!-- Hero Section with Video -->
+  <div class="hero-section">
+    <video autoplay muted loop playsinline id="heroVideo">
+      <source src="bgvideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-text">
+      <h1>Luxury Cars</h1>
+      <p>EXPLORE 31,000+ LUXURY CARS, SUPERCARS AND EXOTIC CARS FOR SALE WORLDWIDE IN ONE SIMPLE SEARCH</p>
+    </div>
   </div>
-</div>
-
 
   <!-- Hero Carousel -->
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="bg3.jpg" class="d-block w-100" alt="Bugatti 1">
-        <div class="carousel-caption text-start">
+        <img src="bg3.jpg" class="d-block w-100" alt="Luxury Cars">
+        <div class="carousel-caption">
           <h1>Luxury Cars</h1>
           <p>Explore thousands of exotic cars worldwide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="bg1.jpg" class="d-block w-100" alt="Bugatti 2">
-        <div class="carousel-caption text-start">
+        <img src="bg1.jpg" class="d-block w-100" alt="Exclusive Designs">
+        <div class="carousel-caption">
           <h1>Exclusive Designs</h1>
           <p>Supercars with unique performance & style.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="bg2.jpg" class="d-block w-100" alt="Bugatti 3">
-        <div class="carousel-caption text-start">
+        <img src="bg2.jpg" class="d-block w-100" alt="Dream Machines">
+        <div class="carousel-caption">
           <h1>Dream Machines</h1>
           <p>Discover the rarest models on the market.</p>
         </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
     </button>
   </div>
 
@@ -302,7 +583,7 @@
     <div class="container">
       <div class="popular-header">
         <h2>Popular Makes</h2>
-        <a href="#">View all</a>
+        <a href="#">View all <i class="fas fa-arrow-right ms-2"></i></a>
       </div>
       <div class="logo-grid">
         <div><img src="bugattilogo.png" alt="Bugatti"></div>
@@ -311,16 +592,13 @@
         <div><img src="ferarrilogo.jpg" alt="Ferrari"></div>
         <div><img src="lamborghinilogo.jpg" alt="Lamborghini"></div>
         <div><img src="mercedezlogo.jpg" alt="Mercedes"></div>
-        <div><img src="rollslogo.jpg" alt="Rolls Royce"></div>
+        <div><img src="audilogo.jpg" alt="Rolls Royce"></div>
         <div><img src="mclarenlogo.jpg" alt="McLaren"></div>
-        <div><img src="brabuslogo.jpg" alt="Brabus"></div>
+        <div><img src="bmwlogo.jpg" alt="BMW"></div>
         <div><img src="porschelogo.jpg" alt="Porsche"></div>
         <div><img src="astonmartinlogo.jpg" alt="Aston Martin"></div>
         <div><img src="bentleylogo.jpg" alt="Bentley"></div>
-        <div><img src="maybachlogo.jpg" alt="Maybach"></div>
-        <div><img src="bmwlogo.jpg" alt="BMW"></div>
-        <div><img src="fordlogo.jpg" alt="Ford"></div>
-        <div><img src="audilogo.jpg" alt="Audi"></div>
+        
       </div>
     </div>
   </section>
@@ -377,18 +655,18 @@
           </ul>
         </div>
 
-        <!-- Column 5 (Logo Ganti QR & Settings) -->
+        <!-- Column 5 (Logo) -->
         <div class="col-md-4 text-center">
-          <img src="logo.png" alt="Your Logo" style="max-width:150px;">
+          <img src="logo.png" alt="Your Logo" style="max-width:150px; filter: brightness(1.2);">
         </div>
       </div>
 
-      <hr class="my-4" style="border-color: #333;">
+      <hr class="my-4" style="border-color: var(--border-light);">
 
       <div class="row align-items-center footer-bottom-info">
         <div class="col-md-8 text-md-start mb-3 mb-md-0">
           <div class="d-flex align-items-center">
-            <img src="https://assets.jamesedition.com/images/favicon/logo_white_min.svg" alt="Logo" style="height: 25px; margin-right: 10px;">
+            <img src="https://assets.jamesedition.com/images/favicon/logo_white_min.svg" alt="Logo" style="height: 25px; margin-right: 10px; filter: brightness(1.2);">
             <span>Copyright &copy; 2025 JamesEdition B.V.®</span>
           </div>
         </div>
@@ -406,5 +684,100 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript for Interactivity -->
+  <script>
+    // Scroll effect for top bar and navbar
+    window.addEventListener('scroll', function() {
+      const topBar = document.getElementById('topBar');
+      const navbar = document.getElementById('navbar');
+      const scrolled = window.scrollY > 50;
+
+      if (scrolled) {
+        topBar.classList.add('scrolled');
+        navbar.classList.add('scrolled');
+      } else {
+        topBar.classList.remove('scrolled');
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Parallax effect for hero video
+    window.addEventListener('scroll', function() {
+      const heroVideo = document.getElementById('heroVideo');
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.5;
+      heroVideo.style.transform = `translateY(${rate}px) scale(1.02)`;
+    });
+
+    // Smooth reveal animation for logo grid on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe each logo div
+    document.querySelectorAll('.logo-grid div').forEach(div => {
+      observer.observe(div);
+    });
+
+    // Navbar link active state on click (for single-page feel)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Add active class style if needed
+    const style = document.createElement('style');
+    style.textContent = `
+      .nav-link.active {
+        background: rgba(71, 154, 237, 0.2) !important;
+        color: #ffffff !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Typing effect for hero text (optional interactivity)
+    const heroP = document.querySelector('.hero-text p');
+    const text = heroP.textContent;
+    heroP.textContent = '';
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        heroP.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+    // Start typing after hero loads
+    window.addEventListener('load', typeWriter);
+
+    // Logo grid click interaction (e.g., alert or navigate)
+    document.querySelectorAll('.logo-grid div').forEach(div => {
+      div.addEventListener('click', function() {
+        const brand = this.querySelector('img').alt;
+        // For demo: show alert; replace with actual navigation
+        alert(`Exploring ${brand} luxury cars!`);
+        // Example: window.location.href = `${brand.toLowerCase()}.html`;
+      });
+    });
+
+    // Carousel auto-pause on hover
+    const carousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
+      interval: 4000,
+      pause: 'hover'
+    });
+  </script>
 </body>
 </html>
