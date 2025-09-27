@@ -17,6 +17,9 @@
   <!-- Google Fonts for better typography -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+  <!-- AOS for animations (added since captions use data-aos) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
     :root {
       --primary-dark: #121212;
@@ -222,8 +225,8 @@
       }
     }
 
-    /* ====================== */
-    /* Hero Carousel - Preserved with 3 slides, smooth transitions, and scroll animation for captions */
+/* ====================== */
+    /* Hero Carousel - Preserved with 8 slides, smooth transitions, and scroll animation for captions */
     /* ====================== */
     #heroCarousel {
       height: 70vh;
@@ -269,7 +272,7 @@
     }
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-      background-color: var(--accent-color); /* Blue buttons */
+      background-color: var(--hover-light); /* Blue buttons */
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -280,8 +283,9 @@
     .carousel-control-next-icon:hover {
       opacity: 1;
       transform: scale(1.1);
-      background-color: var(--gray-dark); /* Darker blue-gray on hover */
+      background-color: var(--accent-gray); /* Darker gray on hover */
     }
+
 
     /* ====================== */
     /* Popular Makes Section - Interactive grid with animations */
@@ -500,6 +504,14 @@
         width: 100px;
         height: 100px;
       }
+
+      .carousel-caption h1 {
+        font-size: 2rem;
+      }
+
+      .carousel-caption p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -526,7 +538,7 @@
           <li class="nav-item"><a class="nav-link" href="bmw.html">BMW</a></li>
           <li class="nav-item"><a class="nav-link" href="porsche.html">Porsche</a></li>
           <li class="nav-item"><a class="nav-link" href="aston.html">Aston Martin</a></li>
-          <li class="nav-item"><a class="nav-link" href="bentley.html">Bentley</a></li>
+                   <li class="nav-item"><a class="nav-link" href="bentley.html">Bentley</a></li>
         </ul>
       </div>
     </div>
@@ -544,62 +556,67 @@
     </div>
   </div>
 
-  <!-- Hero Carousel with 3 Slides -->
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-aos="fade-in">
+  <!-- Hero Carousel with 8 Slides (expanded as requested) -->
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-aos="fade-in"> <!-- Reduced interval for more slides -->
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="bg1.jpg" class="d-block w-100" alt="Luxury Cars">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Luxury Cars</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Explore thousands of exotic cars worldwide.</p>
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>Luxury Cars</h1>
+          <p>Explore thousands of exotic cars worldwide.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="bg2.jpg" class="d-block w-100" alt="Exclusive Designs">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Exclusive Designs</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Supercars with unique performance & style.</p>
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>Exclusive Designs</h1>
+          <p>Supercars with unique performance & style.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="bg3.jpg" class="d-block w-100" alt="Dream Machines">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Dream Machines</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Discover the rarest models on the market.</p>
-        </div>
-        <div class="carousel-item">
-        <img src="bg4.jpg" class="d-block w-100" alt="Luxury Cars">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Luxury Cars</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Explore thousands of exotic cars worldwide.</p>
-        </div>
-          <div class="carousel-item">
-        <img src="bg5.jpg" class="d-block w-100" alt="Exsclusif Design">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Exsclusif Design</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Supercars with unique performance & style.</p>
-        </div>
-            <div class="carousel-item">
-        <img src="bg6.jpg" class="d-block w-100" alt="Dream Machines">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Dream Machines</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Discover the rarest models on the market.</p>
-        </div>
-         <div class="carousel-item">
-        <img src="bg7.jpg" class="d-block w-100" alt="Luxury Cars">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Luxury Cars</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Explore thousands of exotic cars worldwide.</p>
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>Dream Machines</h1>
+          <p>Discover the rarest models on the market.</p>
         </div>
       </div>
-        <div class="carousel-item">
-        <img src="bg8.jpg" class="d-block w-100" alt="Exsclusif Design">
-        <div class="carousel-caption">
-          <h1 data-aos="fade-up" data-aos-delay="100">Exclusive Designs</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Supercars with unique performance & style.</p>
+      <div class="carousel-item">
+        <img src="bg4.jpg" class="d-block w-100" alt="High Performance">
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>High Performance</h1>
+          <p>Engineered for speed and precision on the road.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="bg5.jpg" class="d-block w-100" alt="Elegant Interiors">
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>Elegant Interiors</h1>
+          <p>Luxury craftsmanship in every detail.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="bg6.jpg" class="d-block w-100" alt="Exotic Collections">
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>Exotic Collections</h1>
+          <p>Rare finds from around the globe.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="bg7.jpg" class="d-block w-100" alt="Future Classics">
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>Future Classics</h1>
+          <p>Timeless designs that define an era.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="bg8.jpg" class="d-block w-100" alt="Ultimate Drives">
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="100">
+          <h1>Ultimate Drives</h1>
+          <p>Experience the pinnacle of automotive excellence.</p>
         </div>
       </div>
     </div>
+    
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -624,13 +641,12 @@
         <div><img src="ferarrilogo-removebg-preview.png" alt="Ferrari"></div>
         <div><img src="fordlogo-removebg-preview.png" alt="Ford"></div>
         <div><img src="mercedezlogo-removebg-preview.png" alt="Mercedes"></div>
-        <div><img src="audilogo-removebg-preview.png" alt="Rolls Royce"></div>
+        <div><img src="audilogo-removebg-preview.png" alt="Audi"></div>
         <div><img src="mclarenlogo-removebg-preview.png" alt="McLaren"></div>
         <div><img src="bmwlogo-removebg-preview.png" alt="BMW"></div>
         <div><img src="porschelogo-removebg-preview.png" alt="Porsche"></div>
         <div><img src="astonlogo-removebg-preview.png" alt="Aston Martin"></div>
         <div><img src="ducatilogo-removebg-preview.png" alt="Ducati"></div>
-        
       </div>
     </div>
   </section>
@@ -717,8 +733,18 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- AOS JS (for carousel captions) -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
   <!-- Custom JavaScript for Interactivity -->
   <script>
+    // Initialize AOS for animations
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
     // Scroll effect for top bar and navbar
     window.addEventListener('scroll', function() {
       const topBar = document.getElementById('topBar');
@@ -805,9 +831,10 @@
       });
     });
 
-    // Carousel auto-pause on hover
-    const carousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
-      interval: 4000,
+    // Carousel auto-pause on hover (with 8 slides, interval 3s for faster cycle)
+    const carouselElement = document.getElementById('heroCarousel');
+    const carousel = new bootstrap.Carousel(carouselElement, {
+      interval: 3000,
       pause: 'hover'
     });
   </script>
