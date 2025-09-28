@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagani - UNITY Edition</title>
+  <title>Bugatti - UNITY Edition</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
       overflow-x: hidden;
     }
 
-    /* Top Bar */
+    /* Top Bar - Updated with Flex Layout */
     .top-bar {
       position: fixed;
       top: 0;
@@ -50,10 +50,19 @@
       z-index: 30;
       transition: background 0.3s ease;
       border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
     }
 
     .top-bar.scrolled {
       background: rgba(10, 10, 10, 1);
+    }
+
+    .top-bar .brand-section {
+      display: flex;
+      align-items: center;
     }
 
     .top-bar .brand {
@@ -63,6 +72,79 @@
       letter-spacing: 2px;
       text-shadow: 0 2px 4px var(--shadow-dark);
       animation: fadeInDown 1s ease-out;
+      margin: 0;
+    }
+
+    .top-bar .logo-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .top-bar .logo-section img {
+      max-height: 40px; /* Adjust based on your logo size */
+      width: auto;
+      filter: brightness(1.2); /* Slight enhancement for dark theme */
+      transition: transform 0.3s ease;
+    }
+
+    .top-bar .logo-section img:hover {
+      transform: scale(1.05);
+    }
+
+    .top-bar .nav-section {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .top-bar .nav-section .nav-item {
+      margin: 0 10px;
+    }
+
+    .top-bar .nav-section .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      text-align: left;
+      display: block;
+    }
+
+    .top-bar .nav-section .nav-link.active {
+      background: rgba(71, 154, 237, 0.15) !important; /* Lebih subtle dark */
+      color: var(--text-white) !important;
+      box-shadow: 0 0 10px rgba(71, 154, 237, 0.2);
+    }
+
+    .top-bar .nav-section .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(71, 154, 237, 0.1), transparent); /* Lebih subtle */
+      transition: left 0.5s;
+    }
+
+    .top-bar .nav-section .nav-link:hover::before {
+      left: 100%;
+    }
+
+    .top-bar .nav-section .nav-link:hover {
+      transform: translateY(-2px);
+      color: var(--text-white) !important;
+      background: rgba(71, 154, 237, 0.08); /* Lebih dark hover */
+      box-shadow: 0 4px 15px var(--shadow-dark);
     }
 
     @keyframes fadeInDown {
@@ -76,76 +158,7 @@
       }
     }
 
-    /* Simplified Navbar - Minimal with Home and Bugatti */
-    .navbar {
-      position: fixed;
-      top: 70px;
-      width: 100%;
-      background: rgba(21, 21, 21, 0.95); /* Lebih dark */
-      backdrop-filter: blur(15px);
-      z-index: 25;
-      border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s ease;
-      padding: 10px 0;
-    }
-
-    .navbar.scrolled {
-      top: 60px;
-      background: rgba(21, 21, 21, 1);
-    }
-
-    .navbar-nav {
-      justify-content: center;
-      padding: 0;
-    }
-
-    .navbar-nav .nav-item {
-      margin: 0 20px;
-      
-    }
-
-    .navbar-nav .nav-link {
-      color: var(--text-light) !important;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 10px 20px;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      text-align: left;
-    }
-
-    .navbar-nav .nav-link.active {
-      background: rgba(71, 154, 237, 0.15) !important; /* Lebih subtle dark */
-      color: var(--text-white) !important;
-      box-shadow: 0 0 10px rgba(71, 154, 237, 0.2);
-    }
-
-    .navbar-nav .nav-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(71, 154, 237, 0.1), transparent); /* Lebih subtle */
-      transition: left 0.5s;
-    }
-
-    .navbar-nav .nav-link:hover::before {
-      left: 100%;
-    }
-
-    .navbar-nav .nav-link:hover {
-      transform: translateY(-2px);
-      color: var(--text-white) !important;
-      background: rgba(71, 154, 237, 0.08); /* Lebih dark hover */
-      box-shadow: 0 4px 15px var(--shadow-dark);
-    }
-
-    /* Hero Section - More Dark Overlay */
+    /* Hero Section - Adjusted Margin for Single Top Bar */
     .hero-section {
       position: relative;
       height: 100vh;
@@ -155,7 +168,7 @@
       text-align: center;
       color: var(--text-white);
       overflow: hidden;
-      margin-top: 110px;
+      margin-top: 70px; /* Adjusted from 110px since navbar is removed */
     }
 
     .hero-section::before {
@@ -401,6 +414,29 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .top-bar {
+        padding: 10px 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .top-bar .brand {
+        font-size: 1.5rem;
+      }
+
+      .top-bar .logo-section img {
+        max-height: 30px;
+      }
+
+      .top-bar .nav-section .nav-item {
+        margin: 0 5px;
+      }
+
+      .top-bar .nav-section .nav-link {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+
       .hero-text h1 {
         font-size: 2.5rem;
       }
@@ -409,13 +445,8 @@
         font-size: 1rem;
       }
 
-      .navbar-nav .nav-item {
-        margin: 0 10px;
-      }
-
-      .navbar-nav .nav-link {
-        padding: 8px 15px;
-        font-size: 14px;
+      .hero-section {
+        margin-top: 120px; /* Adjust for stacked mobile layout */
       }
 
       .section-header h2 {
@@ -439,28 +470,25 @@
 </head>
 <body>
 
-  <!-- Top Bar -->
+  <!-- Top Bar - Updated with Brand Left, Logo Center, Nav Right -->
   <div class="top-bar" id="topBar">
-    <span class="brand">UNITY Edition</span>
-  </div>
-
-  <!-- Simplified Navbar -->
-  <nav class="navbar navbar-expand-lg" id="navbar">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse show">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#type35">Pagani</a></li> <!-- Anchor ke section mobil pertama -->
-        </ul>
-      </div>
+    <div class="brand-section">
+      <span class="brand">UNITY Edition</span>
     </div>
-  </nav>
+    <div class="logo-section">
+      <img src="bugattilogo-removebg-preview.png" alt="Bugatti Logo"> <!-- Ganti dengan path logo Bugatti yang sebenarnya -->
+    </div>
+    <ul class="nav-section">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#type35">Bugatti</a></li>
+    </ul>
+  </div>
 
   <!-- Hero Section -->
   <div class="hero-section">
-    <img src="bugatti-hero.jpg" alt="Bugatti Hero" id="heroImg"> <!-- Ganti dengan gambar Bugatti hero -->
+    <img src="bg8.jpg" alt="iya" id="heroImg"> <!-- Ganti dengan gambar Bugatti hero -->
     <div class="hero-text">
-      <h1>Pagani</h1>
+      <h1>Bugatti</h1>
       <p>Discover the legacy of speed and luxury with Bugatti's iconic models, from the pioneering classics to the cutting-edge hypercars.</p>
     </div>
   </div>
@@ -508,12 +536,12 @@
                 <div class="spec-item">
                   <i class="fas fa-weight-hanging"></i>
                   <div>Weight</div>
-                  <div>1,250 kg</div>
+                  <div>1.250 kg</div>
                 </div>
                 <div class="spec-item">
                   <i class="fas fa-gas-pump"></i>
                   <div>Engine</div>
-                  <div>V12 6.0 L</div>
+                  <div>V12 6.0L</div>
                 </div>
                 <div class="spec-item">
                   <i class="fas fa-bolt"></i>
@@ -566,12 +594,12 @@
                 <div class="spec-item">
                   <i class="fas fa-tachometer-alt"></i>
                   <div>Top Speed</div>
-                  <div>350+ km/h</div>
+                  <div>350 km/h</div>
                 </div>
                 <div class="spec-item">
                   <i class="fas fa-weight-hanging"></i>
                   <div>Weight</div>
-                  <div>1,280 kg</div>
+                  <div>1.280 kg</div>
                 </div>
                 <div class="spec-item">
                   <i class="fas fa-gas-pump"></i>
@@ -607,20 +635,17 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom JavaScript -->
+  <!-- Custom JavaScript - Updated for Single Top Bar -->
   <script>
-    // Scroll effect for top bar and navbar
+    // Scroll effect for top bar
     window.addEventListener('scroll', function() {
       const topBar = document.getElementById('topBar');
-      const navbar = document.getElementById('navbar');
       const scrolled = window.scrollY > 50;
 
       if (scrolled) {
         topBar.classList.add('scrolled');
-        navbar.classList.add('scrolled');
       } else {
         topBar.classList.remove('scrolled');
-        navbar.classList.remove('scrolled');
       }
     });
 
@@ -708,6 +733,3 @@
   </script>
 </body>
 </html>
-
-
-
